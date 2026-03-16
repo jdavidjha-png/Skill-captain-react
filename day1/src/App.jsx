@@ -1,17 +1,36 @@
-export default function(){
-const list= ["apple, banana. guava, pineapple, litchi"]
-const btn= [1,2,3,4,5,6,7,8,9]
-return(
-  <>
-  <h1>Day6</h1>
-  <ul>
-    {list.map((item,index)=>(
-        <li>{item}</li>
-      ))}
-  </ul>
-  {btn.map((item,index)=>(
-      <button>{item}</button>
-    ))}
-  </>
-)
+import { useState } from "react";
+
+export default function App(){
+
+
+  const [name,setName] = useState("");
+  const[email,setEmail] = useState("");
+
+  const handle = (e)=>{
+    e.preventDefault();
+    console.log(name);
+    console.log(email);
+  }
+  return(
+   <>
+   <h1>Signup </h1>
+   <form onSubmit={handle}>
+  <input
+    type="text"
+    value={name}
+    onChange={(e) => setName(e.target.value)}
+    placeholder="Username"
+  />
+  <input
+    type="email"
+    value={email}
+    onChange={(e) => {
+      setEmail(e.target.value)}}
+    placeholder="Email"
+  />
+  <button type="submit">Submit</button>
+</form>
+
+    </>
+  )
 }
